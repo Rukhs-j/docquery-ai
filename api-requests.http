@@ -1,0 +1,19 @@
+@base = http://localhost:8083
+@user = alice
+@password = demo-pass
+
+### Current identity
+GET {{base}}/api/me
+Authorization: Basic {{user}} {{password}}
+
+### Main workflow action
+POST {{base}}/api/ask
+Authorization: Basic {{user}} {{password}}
+Content-Type: application/json
+
+{
+  "question": "What is required for expense reimbursement?"
+}
+
+### Health
+GET {{base}}/actuator/health
